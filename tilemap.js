@@ -245,6 +245,13 @@ class TileMap
 
         return null;
     }
+
+    forEach(callback)
+    {
+        this.tiles.forEach((col) => {
+            col.forEach(callback);
+        });
+    }
 }
 
 class Tile
