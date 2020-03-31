@@ -234,6 +234,15 @@ class TileMap
         }
 
         // no solutions
+        for (let t of visited)
+        {
+            t.pathfindingProps = {
+                f: Infinity,
+                g: Infinity,
+                previous: null
+            };
+        }
+
         return null;
     }
 }
