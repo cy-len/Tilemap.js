@@ -252,6 +252,56 @@ class TileMap
             col.forEach(callback);
         });
     }
+
+    allNeighbours(x, y)
+    {
+        let ns = [];
+
+        for (let xOffset = -1; xOffset <= 1; xOffset++)
+        {
+            for (let yOffset = -1; yOffset <= 1; yOffset++)
+            {
+                if (!(xOffset == 0 && yOffset == 0))
+                {
+                    let n = map.tileAt(x + xOffset, y + yOffset);
+                    if (n)
+                    {
+                        ns.push(n);
+                    }
+                }
+            }
+        }
+
+        return ns;
+    }
+
+    cartesianNeighbours(x, y)
+    {
+        let n = [];
+
+        let north = map.tileAt(x, y - 1);
+        if (north)
+        {
+            n.push(north);
+        }
+        let south = map.tileAt(x, y + 1);
+        if (south)
+        {
+            n.push(south);
+        }
+        let east = map.tileAt(x + 1, y);
+        if (east)
+        {
+            n.push(east);
+        }
+        let west = map.tileAt(x - 1, y);
+        if (west)
+        {
+            n.push(west);
+        }
+
+        return n;
+    }
 }
 
 class Tile
